@@ -7,7 +7,7 @@ user_agents = [
 ]
 
 country = 'jp'
-app_name = 'サンエー' # can be named anything, really
+app_name = 'sana' # can be named anything, really
 app_id = '1597898870'
 
 # Get token
