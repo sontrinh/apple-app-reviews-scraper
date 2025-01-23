@@ -15,11 +15,19 @@ token = get_token(country, app_name, app_id, user_agents)
 
 print(f"Authentication Token: {token}")
 
-reviews, offset, status_code = fetch_reviews(country, app_name, app_id, user_agents, token)
+all = []
+offsetStart = '1'
 
-stringO = json.dumps(reviews, indent=2, ensure_ascii=False, default=str)
-print(stringO)
+while True:
+  reviews, offset, status_code = fetch_reviews(country, app_name, app_id, user_agents, token, offset=offsetStart)
+  offsetStart = offset
+  all.extend(reviews)
+  if len(reviews) < 20:
+    break
+
+stringO = json.dumps(all, indent=2, ensure_ascii=False, default=str)
+
 with open("out.txt", "w", encoding='utf-8') as text_file:
     text_file.write(stringO)
 
-print(len(reviews))
+print(len(all))
