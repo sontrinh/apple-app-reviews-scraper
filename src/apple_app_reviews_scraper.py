@@ -120,3 +120,17 @@ def fetch_reviews(country:str , app_name:str , app_id: str, user_agents: dict, t
     # Default sleep to decrease rate of calls
     time.sleep(0.5)
     return reviews, offset, response.status_code 
+
+user_agents = [
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
+]
+
+country = 'jp'
+app_name = 'サンエー' # can be named anything, really
+app_id = '1597898870'
+
+# Get token
+token = get_token(country, app_name, app_id, user_agents)
+
+print(f"Authentication Token: {token}")
