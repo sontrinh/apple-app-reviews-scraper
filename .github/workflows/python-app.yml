@@ -27,4 +27,9 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        python ./src/apple_app_reviews_scraper.py
+        python ./src/main.py
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: out.txt
+
